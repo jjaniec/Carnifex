@@ -1,0 +1,9 @@
+sudo: true
+before_install:
+    - sudo apt-get update -yqq
+    - sudo apt-get install -yqq common-lisp-controller
+matrix:
+    include:
+        - os: linux
+          env: LISP="sbcl --load"
+script: $LISP main.lisp
