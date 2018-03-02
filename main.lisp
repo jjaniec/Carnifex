@@ -1,6 +1,6 @@
-(load 'ft_clear_screen.lisp)
-(load 'ft_gen_arr.lisp)
-(load 'cli.lisp)
+(load 'srcs/ft_clear_screen.lisp)
+(load 'srcs/ft_gen_arr.lisp)
+(load 'srcs/cli.lisp)
 
 (ft_clear_screen_cli)
 (ft_gen_arr 10 10)
