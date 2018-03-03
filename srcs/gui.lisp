@@ -48,6 +48,8 @@
         (setf tile_size (- tile_size zoom_dec_speed)))
       (when (or (sdl:key= key :sdl-key-e) (sdl:key= key :sdl-key-kp-plus))
         (setf tile_size (+ tile_size zoom_dec_speed)))
+      (when (or (sdl:key= key :sdl-key-r))
+        (setq arr (make-array (list y x) :initial-element 0)))
       (ft_print_gui_board arr x y tile_size)
 	)
     (:idle ()
