@@ -15,7 +15,7 @@
   
   (setq arr (make-array (list y x) :initial-element 0))
 
-  (ft_loop tile_size)
+  (ft_loop)
   (exit)
 )
 
