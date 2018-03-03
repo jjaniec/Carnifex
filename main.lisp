@@ -4,8 +4,14 @@
 (defun main ()
   (setq y 100)
   (setq x 100)
+
   (setq tile_size 15)
   (setq zoom_dec_speed 2)
+
+  (defparameter move_x 0)
+  (defparameter move_y 0)
+  (setq move_speed 10)
+  
   (setq arr (make-array (list y x) :initial-element 0))
 
   (ft_loop tile_size)
