@@ -5,9 +5,8 @@
   (setq y 100)
   (setq x 100)
 
-  (setq tile_size 15)
   (setq zoom_dec_speed 2)
-
+  (defparameter tile_size 15)
   (defparameter move_x 0)
   (defparameter move_y 0)
   (setq move_speed 10)
