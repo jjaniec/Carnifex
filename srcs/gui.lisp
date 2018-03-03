@@ -25,7 +25,7 @@
 
 (defun ft_loop (tile_size)
   (sdl:with-init ()
-  (sdl:window (* tile_size x) (* tile_size y) :title-caption "TG FDP")
+  (sdl:window width height :title-caption "TG FDP")
   (setf (sdl:frame-rate) 60)
   (sdl:update-display)
   (sdl:with-events ()
@@ -42,7 +42,6 @@
         (setf move_y (- move_y move_speed)))
 	  (when (or (sdl:key= key :sdl-key-down) (sdl:key= key :sdl-key-s))
         (setf move_y (+ move_y move_speed)))
-	  (write move_x)
       (ft_print_gui_board arr x y 0)
 	)
     (:idle ()
