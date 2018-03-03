@@ -14,16 +14,6 @@
         (ft_print_box (+ 1 (* x2 tile_size) move_x) (+ 1 (* y2 tile_size) move_y) (- tile_size (floor tile_size 10))))))
   (sdl:update-display))
 
-(defun ft_print_cli_board (arr x y)
-  (terpri)
-  (loop for y2 from 0 to (- y 1) do
-    (loop for x2 from 0 to (- x 1) do
-      (if (eq (eq (aref arr y2 x2) 0) T)
-        (write '-))
-      (if (eq (eq (aref arr y2 x2) 1) T)
-        (write-char #\#)))
-    (terpri)))
-
 (defun ft_loop (tile_size)
   (sdl:with-init ()
   (sdl:window width height :title-caption "TG FDP")
