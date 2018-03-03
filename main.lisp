@@ -4,6 +4,8 @@
 (defun main ()
   (setq y 100)
   (setq x 100)
+  (setq width 1000)
+  (setq height 1000)
 
   (setq zoom_dec_speed 2)
   (defparameter tile_size 15)
