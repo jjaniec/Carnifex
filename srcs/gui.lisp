@@ -15,9 +15,6 @@
   (sdl:update-display))
 
 (defun ft_handle_event (key)
-  (write zoom_dec_speed)
-  (write tile_size)
-  (terpri)
   (if (sdl:key= key :sdl-key-escape)
     (sdl:push-quit-event))
 	(if (or (sdl:key= key :sdl-key-left) (sdl:key= key :sdl-key-a))
@@ -32,9 +29,9 @@
     (setf tile_size (- tile_size zoom_dec_speed)))
   (if (or (sdl:key= key :sdl-key-e) (sdl:key= key :sdl-key-kp-plus))
     (setf tile_size (+ tile_size zoom_dec_speed)))
-    (write tile_size)
-    (terpri)
-    (ft_print_gui_board arr x y tile_size)
+  (if (or (sdl:key= key :sdl-key-r))
+    (setq arr (make-array (list y x) :initial-element 0)))
+  (ft_print_gui_board arr x y tile_size)
 )
 
 (defun ft_loop ()
