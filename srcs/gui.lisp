@@ -7,6 +7,7 @@
 )
 
 (defun ft_print_gui_board (arr x y tile_size)
+  (sdl:clear-display sdl:*black*)
   (dotimes (y2 y)
     (dotimes (x2 x)
       (if (eq (eq (aref arr y2 x2) 0) T)
@@ -28,6 +29,7 @@
   (sdl:window width height :title-caption "TG FDP")
   (setf (sdl:frame-rate) 60)
   (sdl:update-display)
+  (sdl:enable-key-repeat nil nil)
   (sdl:with-events ()
     (:quit-event () t)
     (:video-expose-event () (sdl:update-display))
@@ -51,6 +53,5 @@
     (:idle ()
       (when (sdl:mouse-left-p)
         (setf (aref arr (floor (- (sdl:mouse-y) move_y) tile_size) (floor (- (sdl:mouse-x) move_x) tile_size)) 1))
-        (sdl:clear-display sdl:*black*)
         (ft_print_gui_board arr x y tile_size)
         (sdl:update-display)))))
