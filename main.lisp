@@ -2,13 +2,13 @@
 
 ;;(main *posix-argv*))
 (defun main ()
-  (defvar y 10)
-  (defvar x 10)
-  (defvar arr)
-
+  (setq y 100)
+  (setq x 100)
+  (setq zoom 1)
   (setq arr (make-array (list y x) :initial-element 0))
-  (ft_init_window)
+
+  (ft_loop)
   (exit)
 )
 
-(sb-int:with-float-traps-masked (:invalid :inexact :overflow)  (main))
+(sb-int:with-float-traps-masked (:invalid :inexact :overflow) (main))
