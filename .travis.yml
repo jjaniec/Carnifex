@@ -1,9 +1,10 @@
 sudo: true
 before_install:
     - sudo apt-get update -yqq
-    - sudo apt-get install -yqq common-lisp-controller
+    - sudo apt-get install -yqq common-lisp-controller curl libsdl1.2-dev
+    - curl https://beta.quicklisp.org/quicklisp.lisp > quicklisp.lisp
 matrix:
     include:
         - os: linux
           env: LISP="sbcl --load"
-script: $LISP main.lisp
+script: echo "(quicklisp-quickstart:install)" >> quicklisp.lisp; echo '(ql:quickload "lispbuilder-sdl")' >> quicklisp.lisp; echo "(exit)" >> quicklisp.lisp; $LISP quicklisp; $LISP main.lisp
