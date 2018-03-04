@@ -93,15 +93,15 @@
     (:quit-event () t)
     (:video-expose-event () (sdl:update-display))
 	(:mouse-button-up-event (:button button :x mouse-x :y mouse-y)
-	  (if (= button 4)
+	  (if (= button 4) ; When down
 		  (if (or (sdl:key-down-p :sdl-key-lshift)
 				  (sdl:key-down-p :sdl-key-rshift))
-			  nil
+			  (ft_speed_game nil) ; shifted
 			(ft_dezoom)))
-	  (if (= button 5)
+	  (if (= button 5) ; When up
 		  (if (or (sdl:key-down-p :sdl-key-lshift)
 				  (sdl:key-down-p :sdl-key-rshift))
-			  nil
+			  (ft_speed_game t) ; shifted
 			(ft_zoom))))
     (:key-down-event (:key key)
       (ft_handle_event key))
