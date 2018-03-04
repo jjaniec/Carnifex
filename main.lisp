@@ -10,6 +10,11 @@
     (nth 1 *posix-argv*)))
   (setq x (parse-integer
 		   (nth 2 *posix-argv*)))
+  (if (or (< 1000 y)
+		  (< 1000 x))
+	  (progn
+		(format t "Les dimensions ne doivent pas exceder une longeur de 1000~%")
+		(exit)))
   (defparameter *invert* 1)
   (loop for arg in *posix-argv*
 		if (or (string-equal "-i" arg)
