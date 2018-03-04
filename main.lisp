@@ -1,3 +1,4 @@
+(load "srcs/algo.lisp")
 (load "srcs/gui.lisp")
 (load "srcs/cli.lisp")
 (load "srcs/extra.lisp")
@@ -12,11 +13,18 @@
   (setq zoom_dec_speed 2)
   (setq move_speed 10)
   (defparameter tile_size 15)
+
   (defparameter move_x 0)
   (defparameter move_y 0)
   (defparameter pause 1)
+  (defparameter speed_game 60)
+  (setq change_speed_game 5)
+  (defparameter cur_time 0)
+  (defparameter last_time 0)
   
   (setq arr (make-array (list y x) :initial-element 0))
+  (setq next_generation (make-array (list x y) :initial-element 0))
+  ;;(setq arr (rand))
 
   (ft_loop)
   (exit)
