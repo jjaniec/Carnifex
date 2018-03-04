@@ -1,8 +1,10 @@
 (load "srcs/gui.lisp")
 (load "srcs/cli.lisp")
+(load "srcs/extra.lisp")
 
 ;;(main *posix-argv*))
 (defun main ()
+  (ft_usage :pname (car sb-ext:*posix-argv*))
   (setq y 100)
   (setq x 50)
   (setq width 1000)
