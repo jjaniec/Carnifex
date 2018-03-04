@@ -7,11 +7,14 @@
     :color color)
 )
 
+(defun invert_color ()
+  (if (EQUAL *invert* 1) 1 0))
+
 (defun ft_print_gui_board (arr x y tile_size)
   (sdl:clear-display sdl:*black*)
   (dotimes (y2 y)
     (dotimes (x2 x)
-      (if (eq (eq (aref arr y2 x2) 1) T)
+      (if (eq (eq (aref arr y2 x2) (invert_color)) T)
         (ft_print_box (+ 1 (* x2 tile_size) move_x) (+ 1 (* y2 tile_size) move_y) (- tile_size (floor tile_size 10)) *white*))
 			(if (eq (aref arr y2 x2) 2)
         (ft_print_box (+ 1 (* x2 tile_size) move_x) (+ 1 (* y2 tile_size) move_y) (- tile_size (floor tile_size 10)) *red*))

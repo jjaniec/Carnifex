@@ -1,5 +1,8 @@
 ;gnu clisp 2.49
 
+(defun display_trace () 
+    (if (EQUAL *trace* 1) 2 0))
+
 (defun current_cell (i j)
     (aref arr i j))
 
@@ -47,7 +50,7 @@
         (current_cell i j)
         (if (NOT(< (next_cell i j) 2))
             1
-            2)
+            (display_trace))
         ))
 
 (defun rule2 (i j)
@@ -55,7 +58,7 @@
         (current_cell i j)
         (if (OR (EQUAL (next_cell i j) 2) (EQUAL (next_cell i j) 3))
             1
-            2)
+            (display_trace))
         ))
 
 (defun rule3 (i j)
@@ -63,7 +66,7 @@
         (current_cell i j)
         (if (NOT (> (next_cell i j) 3))
             1
-            2)
+            (display_trace))
         ))
 
 (defun rule4 (i j)

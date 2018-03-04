@@ -12,6 +12,8 @@
   (setq height 1000)
   (setq zoom_dec_speed 2)
   (setq move_speed 10)
+  (defparameter *invert* 1)
+  (defparameter *trace* 0)
   (defparameter tile_size 15)
   (defparameter last_x 0)
   (defparameter last_y 0)
