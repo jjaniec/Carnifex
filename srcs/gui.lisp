@@ -83,11 +83,31 @@
 
 (defun ft_mouse_event ()
   (if (sdl:mouse-left-p)
-	(let
-	  ((i_tab (floor (- (sdl:mouse-y) move_y) tile_size))
-	   (j_tab (floor (- (sdl:mouse-x) move_x) tile_size)))
-	  (if (eq (and (>= i_tab 0) (< i_tab y) (>= j_tab 0) (< j_tab x)) T)
-        (setf (aref arr i_tab j_tab) 1))))
+    (progn
+	  (if (or (sdl:key-down-p :sdl-key-lctrl) (sdl:key-down-p :sdl-key-rctrl))
+		(progn
+		  (if (and (eq last_x 0) (eq last_y 0))
+			(progn
+			  (setf last_x (sdl:mouse-x))
+			  (setf last_y (sdl:mouse-y))
+			)
+			(progn
+			  (let
+				((x_act (sdl:mouse-x))
+				 (y_act (sdl:mouse-y)))
+				(setf move_x (+ move_x (- x_act last_x)))
+				(setf move_y (+ move_y (- y_act last_y)))
+				(setf last_x x_act)
+				(setf last_y y_act)
+			  )
+			)
+		  )
+		)
+	    (let
+	         ((i_tab (floor (- (sdl:mouse-y) move_y) tile_size))
+	          (j_tab (floor (- (sdl:mouse-x) move_x) tile_size)))
+	         (if (eq (and (>= i_tab 0) (< i_tab y) (>= j_tab 0) (< j_tab x)) T)
+               (setf (aref arr i_tab j_tab) 1))))))
   (if (sdl:mouse-right-p)
 	(let
 	  ((i_tab (floor (- (sdl:mouse-y) move_y) tile_size))
@@ -117,7 +137,14 @@
 		  (if (or (sdl:key-down-p :sdl-key-lshift)
 				  (sdl:key-down-p :sdl-key-rshift))
 			  (ft_speed_game t) ; shifted
-			(ft_zoom))))
+			(ft_zoom)))
+	  (if (= button 1)
+	    (progn
+		  (setf last_x 0)
+		  (setf last_y 0)
+		)
+	  )
+	)
     (:key-down-event (:key key)
       (ft_handle_event key))
     (:idle ()
