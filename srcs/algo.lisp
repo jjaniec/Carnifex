@@ -1,6 +1,9 @@
 (defun current_cell (i j)
   (aref arr i j))
 
+(defun display_trace ()
+  (if (EQUAL *trace* 1) 2 0))
+
 (defun next_cell (i j)
   (aref next_generation i j))
 
@@ -40,7 +43,7 @@
 	  (current_cell i j)
 	(if (NOT(< (next_cell i j) 2))
 		1
-	  0)))
+	  (display_trace))))
 
 (defun rule2 (i j)
   (if (NOT(is_alive i j))
@@ -48,21 +51,21 @@
 	(if (OR (EQUAL (next_cell i j) 2)
             (EQUAL (next_cell i j) 3))
 		1
-	  0)))
+	  (display_trace))))
 
 (defun rule3 (i j)
   (if (NOT(is_alive i j))
 	  (current_cell i j)
 	(if (NOT (> (next_cell i j) 3))
 		1
-	  0)))
+	  (display_trace))))
 
 (defun rule4 (i j)
   (if (is_alive i j)
 	  (current_cell i j)
 	(if (EQUAL (next_cell i j) 3)
 		1
-	  0)))
+	  (current_cell i j))))
 
 (defun calc_alive ()
   (dotimes (i y)
