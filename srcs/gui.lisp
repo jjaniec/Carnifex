@@ -48,9 +48,9 @@
   (if (or (sdl:key= key :sdl-key-r))
     (setq arr (make-array (list y x) :initial-element 0)))
   (if (or (sdl:key= key :sdl-key-p) (sdl:key= key :sdl-key-space))
-    (if (= pause 1)
-	  (setf pause 0)
-	)
+	  (if (= pause 1)
+		  (setf pause 0)
+		)
     (if (= pause 0)
 	  (setf pause 1)
 	)
@@ -60,20 +60,20 @@
 
 (defun ft_mouse_event ()
   (if (sdl:mouse-left-p)
-	(let 
+	(let
 	  ((i_tab (floor (- (sdl:mouse-y) move_y) tile_size))
 	   (j_tab (floor (- (sdl:mouse-x) move_x) tile_size)))
 	  (if (eq (and (>= i_tab 0) (< i_tab y) (>= j_tab 0) (< j_tab x)) T)
         (setf (aref arr i_tab j_tab) 1))))
   (if (sdl:mouse-right-p)
-	(let 
+	(let
 	  ((i_tab (floor (- (sdl:mouse-y) move_y) tile_size))
 	   (j_tab (floor (- (sdl:mouse-x) move_x) tile_size)))
 	  (if (eq (and (>= i_tab 0) (< i_tab y) (>= j_tab 0) (< j_tab x)) T)
         (setf (aref arr i_tab j_tab) 0))))
-  (if (or (sdl:mouse-wheel-up-p) (sdl:mouse-x1-p)) ;ca marche pas :'(
+  (when (sdl:mouse-wheel-up-p) ;ca marche pas :'(
     (ft_zoom))
-  (if (or (sdl:mouse-wheel-down-p) (sdl:mouse-x2-p))
+  (when (or (sdl:mouse-wheel-down-p) (sdl:mouse-x2-p))
     (ft_dezoom))
   (ft_print_gui_board arr x y tile_size)
 )
@@ -92,6 +92,17 @@
   (sdl:with-events ()
     (:quit-event () t)
     (:video-expose-event () (sdl:update-display))
+	(:mouse-button-up-event (:button button :x mouse-x :y mouse-y)
+	  (if (= button 4)
+		  (if (or (sdl:key-down-p :sdl-key-lshift)
+				  (sdl:key-down-p :sdl-key-rshift))
+			  nil
+			(ft_dezoom)))
+	  (if (= button 5)
+		  (if (or (sdl:key-down-p :sdl-key-lshift)
+				  (sdl:key-down-p :sdl-key-rshift))
+			  nil
+			(ft_zoom))))
     (:key-down-event (:key key)
       (ft_handle_event key))
     (:idle ()
