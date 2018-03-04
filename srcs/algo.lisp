@@ -10,14 +10,12 @@
     (EQUAL (current_cell i j) 1))
 
 (defun rand ()
-  (dotimes (i x)
-    (dotimes (j y)
+  (dotimes (i y)
+    (dotimes (j x)
         (setf (aref arr i j) (random 2)))) arr)
 
-(defun range (i) (AND (> i -1) (< i x)))
-
 (defun is_nearby (i j)
-    (if (AND (range i) (range j))
+    (if (AND (> i -1) (< i y) (> j -1) (< j x))
         (if (equal (current_cell i j) 1) 1 0)
         0
     )
@@ -35,8 +33,8 @@
        ))
 
 (defun calc_neighbor ()
-  (dotimes (i x)
-    (dotimes (j y)
+  (dotimes (i y)
+    (dotimes (j x)
         (setf (aref next_generation i j) (get_neighbor i j)))) next_generation)
 
 ;; const rule1 = rule((n, a) => !a ? a : !(n < 2)) // underpopulation
@@ -77,10 +75,10 @@
         ))
 
 (defun calc_alive ()
-  (dotimes (i x)
-    (dotimes (j y)
+  (dotimes (i y)
+    (dotimes (j x)
         (setf (aref arr i j) (rule1 i j)) 
-        (setf (aref arr i j) (rule2 i j)) 
+        ;; (setf (aref arr i j) (rule2 i j))
         (setf (aref arr i j) (rule3 i j))
         (setf (aref arr i j) (rule4 i j))
         )) 
@@ -89,11 +87,5 @@
 
 (defun ft_algo ()
   (setq next_generation (calc_neighbor))
-  ;; (print "Current generation")
-  ;; (print arr)
-  ;; (print "Neighbor Array")
-  ;; (print next_generation)
   (setq arr (calc_alive))
-  ;; (print "New generation")
-  ;; (print arr)
 )
