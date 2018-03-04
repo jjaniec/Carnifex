@@ -12,6 +12,7 @@
   (defparameter tile_size 15)
   (defparameter move_x 0)
   (defparameter move_y 0)
+  (defparameter pause 1)
   
   (setq arr (make-array (list y x) :initial-element 0))
 
