@@ -1,6 +1,6 @@
 (ql:quickload "lispbuilder-sdl")
 (defparameter *white* sdl:*white*)
-(defparameter *red* sdl:*red*)
+(defparameter *red* (sdl:color :r 137 :g 137 :b 137))
 
 (defun ft_print_box (x_ y_ size color)
   (sdl:draw-box (sdl:rectangle-from-midpoint-*  (+ x_ (floor size 2))  (+ y_(floor size 2)) size size)
