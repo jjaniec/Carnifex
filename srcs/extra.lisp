@@ -1,5 +1,5 @@
 (defun ft_usage (&key pname)
-  (let ((banner "usage: ~s [-h --help] <width:int> <height:int>
+  (let ((banner "usage: ~s <width:int> <height:int> [-h --help -i --invert -t --traces]
 positional arguments:
   width                 width of the grid
   height                height of the grid
@@ -9,7 +9,7 @@ optional arguments:
 				  when (or (string-equal "-h" arg)
 						   (string-equal "--help" arg))
 				  return t)
-			(not (equal 3 (length *posix-argv*))))
+			(not (< 2 (length *posix-argv*))))
 		(progn
 		  (format t banner pname)
 		  (sb-ext:exit))))

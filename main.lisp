@@ -9,7 +9,17 @@
   (setq y (parse-integer
     (nth 1 *posix-argv*)))
   (setq x (parse-integer
-    (nth 2 *posix-argv*)))
+		   (nth 2 *posix-argv*)))
+  (defparameter *invert* 1)
+  (loop for arg in *posix-argv*
+		if (or (string-equal "-i" arg)
+			   (string-equal "--invert" arg))
+		do (setq *invert* 0))
+  (defparameter *traces* 0)
+  (loop for arg in *posix-argv*
+		if (or (string-equal "-t" arg)
+			   (string-equal "--traces" arg))
+		do (setq *traces* 1))
   (setq width 1000)
   (setq height 1000)
   (setq zoom_dec_speed 2)
