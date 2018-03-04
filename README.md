@@ -1,5 +1,9 @@
 # Carnifex
 
+<p align="center">
+<img src="imgs/1.gif">
+</p>
+
 ## What's Carnifex
 
 Carnifex is a Conway's game of Life automaton, made in Common Lisp, in the context of a 48hours rush at [42 Paris](https://42.fr), to learn more about the subject, see [Carnifex.pdf](https://github.com/jjaniec/Carniflex/blob/master/Carniflex.pdf)
@@ -49,6 +53,10 @@ sbcl --load ./main.lisp [-h --help -i --invert -t --traces] <width:int> <height:
 ```
 
 ## Commands
+
+<p align="center">
+<img src="imgs/2.gif">
+</p>
 
 ### Controlling cells lives
 
