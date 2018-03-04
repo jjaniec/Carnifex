@@ -15,6 +15,11 @@
 	  (progn
 		(format t "Les dimensions ne doivent pas exceder une longeur de 1000~%")
 		(exit)))
+  (if (or (> 0 y)
+		  (> 0 x))
+	  (progn
+		(format t "Les valeurs doivent etre positives~%")
+		(exit)))
   (defparameter *invert* 1)
   (loop for arg in *posix-argv*
 		if (or (string-equal "-i" arg)
