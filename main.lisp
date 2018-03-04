@@ -23,8 +23,8 @@
   (defparameter last_time 0)
   
   (setq arr (make-array (list y x) :initial-element 0))
-  (setq next_generation (make-array (list x y) :initial-element 0))
-  ;;(setq arr (rand))
+  (setq next_generation (make-array (list y x) :initial-element 0))
+  (setq arr (rand))
 
   (ft_loop)
   (exit)
