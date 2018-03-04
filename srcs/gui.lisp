@@ -78,7 +78,6 @@
 		)
     (if (= pause 0)
 	  (setf pause 1)
-	  (setf pause 0)
 	)
   )
   (ft_print_gui_board arr x y tile_size)
