@@ -1,3 +1,4 @@
+(load "srcs/algo.lisp")
 (load "srcs/gui.lisp")
 (load "srcs/cli.lisp")
 (load "srcs/extra.lisp")
@@ -17,6 +18,8 @@
   (defparameter pause 1)
   
   (setq arr (make-array (list y x) :initial-element 0))
+  (setq next_generation (make-array (list x y) :initial-element 0))
+  ;;(setq arr (rand))
 
   (ft_loop)
   (exit)
