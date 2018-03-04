@@ -47,7 +47,7 @@
         (current_cell i j)
         (if (NOT(< (next_cell i j) 2))
             1
-            0)
+            2)
         ))
 
 (defun rule2 (i j)
@@ -55,7 +55,7 @@
         (current_cell i j)
         (if (OR (EQUAL (next_cell i j) 2) (EQUAL (next_cell i j) 3))
             1
-            0)
+            2)
         ))
 
 (defun rule3 (i j)
@@ -63,7 +63,7 @@
         (current_cell i j)
         (if (NOT (> (next_cell i j) 3))
             1
-            0)
+            2)
         ))
 
 (defun rule4 (i j)
@@ -71,7 +71,7 @@
         (current_cell i j)
         (if (EQUAL (next_cell i j) 3)
             1
-            0)
+            (current_cell i j))
         ))
 
 (defun calc_alive ()
@@ -84,8 +84,10 @@
         )) 
     arr)
    
+()
 
 (defun ft_algo ()
   (setq next_generation (calc_neighbor))
   (setq arr (calc_alive))
+  ;; (print arr)
 )

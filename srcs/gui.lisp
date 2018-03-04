@@ -1,9 +1,10 @@
 (ql:quickload "lispbuilder-sdl")
-(defparameter *random-color* sdl:*white*)
+(defparameter *white* sdl:*white*)
+(defparameter *red* sdl:*red*)
 
-(defun ft_print_box (x_ y_ size)
+(defun ft_print_box (x_ y_ size color)
   (sdl:draw-box (sdl:rectangle-from-midpoint-*  (+ x_ (floor size 2))  (+ y_(floor size 2)) size size)
-    :color *random-color*)
+    :color color)
 )
 
 (defun ft_print_gui_board (arr x y tile_size)
@@ -11,7 +12,10 @@
   (dotimes (y2 y)
     (dotimes (x2 x)
       (if (eq (eq (aref arr y2 x2) 1) T)
-        (ft_print_box (+ 1 (* x2 tile_size) move_x) (+ 1 (* y2 tile_size) move_y) (- tile_size (floor tile_size 10))))))
+        (ft_print_box (+ 1 (* x2 tile_size) move_x) (+ 1 (* y2 tile_size) move_y) (- tile_size (floor tile_size 10)) *white*))
+			(if (eq (aref arr y2 x2) 2)
+        (ft_print_box (+ 1 (* x2 tile_size) move_x) (+ 1 (* y2 tile_size) move_y) (- tile_size (floor tile_size 10)) *red*))
+				))
   (sdl:update-display)
 )
 
