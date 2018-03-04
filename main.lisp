@@ -15,6 +15,9 @@
   (defparameter move_y 0)
   (defparameter pause 1)
   (defparameter speed_game 60)
+  (setq change_speed_game 5)
+  (defparameter cur_time 0)
+  (defparameter last_time 0)
   
   (setq arr (make-array (list y x) :initial-element 0))
   (setq arr2 arr)

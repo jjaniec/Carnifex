@@ -35,6 +35,21 @@
   )
 )
 
+(defun ft_speed_game (arg)
+  (if (eq arg T)
+	(progn
+	  (if (<= speed_game 20)
+	    (setf speed_game (- speed_game change_speed_game))
+	  )
+	)
+	(progn
+	  (if (>= speed_game 100)
+	    (setf speed_game (+ speed_game change_speed_game))
+	  )
+	)
+  )
+)
+
 (defun ft_handle_event (key)
   (if (sdl:key= key :sdl-key-escape)
     (sdl:push-quit-event))
@@ -46,6 +61,10 @@
     (setf move_y (+ move_y move_speed)))
   (if (or (sdl:key= key :sdl-key-down) (sdl:key= key :sdl-key-s))
     (setf move_y (- move_y move_speed)))
+  (if (sdl:key= key :sdl-key-period)
+    (ft_speed_game T))
+  (if (sdl:key= key :sdl-key-comma)
+    (ft_speed_game nil))
   (if (or (sdl:key= key :sdl-key-q) (sdl:key= key :sdl-key-kp-minus))
     (ft_dezoom))
   (if (or (sdl:key= key :sdl-key-e) (sdl:key= key :sdl-key-kp-plus))
@@ -82,8 +101,7 @@
 )
 
 (defun ft_algo ()
-  (write "jjaniec le terpri ")
-  (write (get-internal-run-time))
+  (write "jjaniec le terpri")
   (terpri)
 )
 
@@ -103,6 +121,11 @@
   	  (if (eq (eq pause 0) T)
   	    (progn
   	      (setf cur_time (get-internal-run-time))
-;		  (write (- last_time (- cur_time speed_game)))
+		  (let ((time_wait (- last_time (- cur_time speed_game))))
+		    (if (> time_wait 0)
+			  (sleep (/ time_wait 100))
+			)
+		  )
   	      (ft_algo)
+		  (setf last_time cur_time)
 	  ))))))
