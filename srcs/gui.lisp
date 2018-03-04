@@ -93,9 +93,9 @@
 	   (j_tab (floor (- (sdl:mouse-x) move_x) tile_size)))
 	  (if (eq (and (>= i_tab 0) (< i_tab y) (>= j_tab 0) (< j_tab x)) T)
         (setf (aref arr i_tab j_tab) 0))))
-  (if (or (sdl:mouse-wheel-up-p) (sdl:mouse-x1-p)) ;ca marche pas :'(
+  (if (or (sdl:mouse-wheel-up-p) (sdl:mouse-x2-p)) ;ca marche pas :'(
     (ft_zoom))
-  (if (or (sdl:mouse-wheel-down-p) (sdl:mouse-x2-p))
+  (if (or (sdl:mouse-wheel-down-p) (sdl:mouse-x1-p))
     (ft_dezoom))
   (ft_print_gui_board arr x y tile_size)
 )
