@@ -100,7 +100,7 @@
 (defun ft_loop ()
   (sdl:with-init ()
 
-  (sdl:window width height :title-caption "TG FDP")
+  (sdl:window width height :title-caption "Carnifex")
   (setf (sdl:frame-rate) 60)
   (sdl:update-display)
   (sdl:enable-key-repeat nil nil)
