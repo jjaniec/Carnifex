@@ -8,7 +8,7 @@
 
 Carnifex is a Conway's game of Life automaton, made in Common Lisp, in the context of a 48hours rush at [42 Paris](https://42.fr), to learn more about the subject, see [Carnifex.pdf](https://github.com/jjaniec/Carniflex/blob/master/Carniflex.pdf)
 
-Made by [@Ashbury](https://github.com/Ashbury), [@willfree108](https://github.com/willfree108), [@iomonad](https://github.com/iomonad), [@tarama78](https://github.com/tarama78), [@UgoNic](https://github.com/UgoNic) and [me](https://github.com/jjaniec)
+Made by [@Ashbury](https://github.com/Ashbury), [@willfree108](https://github.com/willfree108), [@iomonad](https://github.com/iomonad), [@tnicolas42](https://github.com/tnicolas42), [@UgoNic](https://github.com/UgoNic) and [me](https://github.com/jjaniec)
 
 ## Installation
 
